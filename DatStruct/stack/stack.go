@@ -23,7 +23,7 @@ func (s *Stack) Push(value int) {
 	s.head = &newNode
 }
 
-func (s *Stack) Pop(head *node) (int, error) {
+func (s *Stack) Pop() (int, error) {
 	if s.IsEmpty() {
 		return 0, errors.New("Stack is empty")
 	}
@@ -50,8 +50,9 @@ func (s *Stack) Show() {
 	}
 	fmt.Printf("%d", s.head.val)
 	tmp := s.head
-	if tmp.next != nil {
+	for tmp.next != nil {
 		tmp = tmp.next
 		fmt.Printf(" -> %d", tmp.val)
 	}
+	fmt.Printf("\n")
 }
