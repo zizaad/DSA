@@ -4,7 +4,7 @@ package circularlinkedlist
 
 import "fmt"
 
-type Circularlinkedlist struct {
+type CircularLinkedList struct {
 	head    *Node
 	counter int
 }
@@ -15,13 +15,15 @@ type Node struct {
 	right *Node
 }
 
-func (l *Circularlinkedlist) isEmpty() bool {
+func (l *CircularLinkedList) isEmpty() bool {
 	return l.head == nil
 }
 
-func (l *Circularlinkedlist) InsertAtEnd(value int) {
+func (l *CircularLinkedList) InsertAtEnd(value int) {
 	if l.isEmpty() {
-		l.head = &Node{value, l.head, l.head}
+		l.head = &Node{value, nil, nil}
+		l.head.left = l.head
+		l.head.right = l.head
 		l.counter++
 		return
 	}
@@ -31,9 +33,11 @@ func (l *Circularlinkedlist) InsertAtEnd(value int) {
 	l.counter++
 }
 
-func (l *Circularlinkedlist) InsertAtHead(value int) {
+func (l *CircularLinkedList) InsertAtHead(value int) {
 	if l.isEmpty() {
-		l.head = &Node{value, l.head, l.head}
+		l.head = &Node{value, nil, nil}
+		l.head.left = l.head
+		l.head.right = l.head
 		l.counter++
 		return
 	}
@@ -44,7 +48,7 @@ func (l *Circularlinkedlist) InsertAtHead(value int) {
 	l.counter++
 }
 
-func (l *Circularlinkedlist) Delete(value int) bool {
+func (l *CircularLinkedList) Delete(value int) bool {
 	if l.isEmpty() {
 		return false
 	}
@@ -79,7 +83,7 @@ func (l *Circularlinkedlist) Delete(value int) bool {
 	return false
 }
 
-func (l *Circularlinkedlist) DeleteAtHead() bool {
+func (l *CircularLinkedList) DeleteAtHead() bool {
 	if l.isEmpty() {
 		return false
 	}
@@ -96,7 +100,7 @@ func (l *Circularlinkedlist) DeleteAtHead() bool {
 	return true
 }
 
-func (l *Circularlinkedlist) Search(value int) *Node {
+func (l *CircularLinkedList) Search(value int) *Node {
 	if l.isEmpty() {
 		return nil
 	}
@@ -110,7 +114,7 @@ func (l *Circularlinkedlist) Search(value int) *Node {
 	return nil
 }
 
-func (l *Circularlinkedlist) Show() {
+func (l *CircularLinkedList) Show() {
 	if l.isEmpty() {
 		fmt.Println("List is empty")
 		return
