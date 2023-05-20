@@ -48,8 +48,8 @@ func (l *DoublyLinkedList) Delete(value int) bool {
 	tmp := l.head
 	for tmp.right != nil {
 		if tmp.right.Val == value {
-			tmp.right = tmp.right.right
 			tmp.right.left = tmp
+			tmp.right = tmp.right.right
 			return true
 		}
 		tmp = tmp.right
