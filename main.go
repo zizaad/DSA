@@ -1,19 +1,35 @@
 package main
 
 import (
-	"DatStruct/stack"
 	"fmt"
+
+	"github.com/zizaad/DSA/DatStruct/stack"
 )
 
 func main() {
-	stack := stack.Stack{nil}
+	checkStack()
+}
+
+func checkStack() {
+	stack := stack.Stack{}
 	stack.Show()
 	stack.Push(0)
 	stack.Push(1)
 	stack.Push(2)
 	stack.Push(3)
 	stack.Show()
-	fmt.Println("Top: %d\n", stack.Top())
+	tmp, err := stack.Top()
+	if err != nil {
+		fmt.Errorf("Error: %v", err)
+	}
+	fmt.Printf("Top: %d\n", tmp)
+
 	stack.Show()
-	fmt.Println("Pop: %d\n", stack.Pop())
+	tmp, err = stack.Pop()
+	if err != nil {
+		fmt.Errorf("Error: %v", err)
+	}
+	fmt.Printf("Pop: %d\n", tmp)
+
+	stack.Show()
 }

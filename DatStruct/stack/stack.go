@@ -15,7 +15,7 @@ type node struct {
 }
 
 func (s *Stack) Push(value int) {
-	if s.IsEmpty() {
+	if s.isEmpty() {
 		s.head = &node{value, nil}
 		return
 	}
@@ -24,7 +24,7 @@ func (s *Stack) Push(value int) {
 }
 
 func (s *Stack) Pop() (int, error) {
-	if s.IsEmpty() {
+	if s.isEmpty() {
 		return 0, errors.New("Stack is empty")
 	}
 	tmp := s.head.val
@@ -32,19 +32,19 @@ func (s *Stack) Pop() (int, error) {
 	return tmp, nil
 }
 
-func (s *Stack) IsEmpty() bool {
+func (s *Stack) isEmpty() bool {
 	return s.head == nil
 }
 
 func (s *Stack) Top() (int, error) {
-	if s.IsEmpty() {
+	if s.isEmpty() {
 		return 0, errors.New("Stack is empty")
 	}
 	return s.head.val, nil
 }
 
 func (s *Stack) Show() {
-	if s.IsEmpty() {
+	if s.isEmpty() {
 		fmt.Println("Stack is empty")
 		return
 	}
