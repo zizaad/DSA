@@ -54,6 +54,7 @@ func (q *Queue) Show() {
 	fmt.Printf("%d", q.head.val)
 	tmp := q.head
 	for tmp.next != nil {
+		tmp = tmp.next
 		fmt.Printf(" <- %d", tmp.val)
 	}
 	fmt.Printf("\n")
