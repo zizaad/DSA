@@ -3,13 +3,15 @@ package main
 import (
 	"fmt"
 
+	sll "github.com/zizaad/DSA/DatStruct/lists/singlyLinkedList"
 	"github.com/zizaad/DSA/DatStruct/queue"
 	"github.com/zizaad/DSA/DatStruct/stack"
 )
 
 func main() {
 	// checkStack()
-	checkQueue()
+	// checkQueue()
+	checkSinglyLinkedList()
 }
 
 func checkStack() {
@@ -61,5 +63,31 @@ func checkQueue() {
 	_, err = q.Dequeue()
 	if err != nil {
 		fmt.Printf("Error: %v\n", err)
+	}
+}
+
+func checkSinglyLinkedList() {
+	ls := sll.SinglyLinkedList{}
+	ls.Show()
+	ls.InsertAtEnd(1)
+	ls.InsertAtEnd(2)
+	ls.Show()
+	ls.InsertAtHead(3)
+	ls.Show()
+	tmp := ls.Search(2)
+	fmt.Printf("Search(2) = %d\n", tmp.Val)
+	tmp = ls.Search(4)
+	if tmp == nil {
+		fmt.Printf("Search(4) = nil\n")
+	}
+	ls.Delete(2)
+	ls.Show()
+	ls.DeleteAtHead()
+	ls.Show()
+	ls.DeleteAtHead()
+	ls.Show()
+	ok := ls.DeleteAtHead()
+	if !ok {
+		fmt.Printf("List is empty. You can't delete anything.\n")
 	}
 }
